@@ -7,18 +7,18 @@
   <body class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <div style="border: solid 1px black; height: 400px; width: 400px;" class="tile">
-          <h2>Dev Mode Status</h2>
+        <div style="border: solid 1px black; height: 300px; width: 300px;" class="tile">
+          <h2 style="text-align:center;">Dev Mode Status</h2>
 
           <% if @isDevModeOn['result']['value'] == 'on' %>
-            <h2 style="background: green;">ON</h2>
-            <h2>Time Remaining: <%= @secondsToMinutes %></h2>
+            <h2 style="background: green; text-align:center;">ON</h2>
+            <h2 style="text-align:center; margin:auto;">Time Remaining: <%= @secondsToMinutes %></h2>
 
-            <a href="/devModeOff">Turn off Dev Mode</a>
+            <a class="btn btn-active btn-success text-center" style="display:inline-block; margin: 5rem 7.5rem;" href="/devModeOff">Turn off Dev Mode</a>
           <% else %>
-            <h2 style="background: red;">OFF</h2>
+            <h2 style="text-align:center; background: red;">OFF</h2>
 
-            <a href="/devModeOn">Turn On Dev Mode</a>
+            <a class="btn btn-active btn-success text-center" style="display:inline-block;margin:5rem 7.5rem;" href="/devModeOn">Turn On Dev Mode</a>
           <% end %>
         </div>
       </div>

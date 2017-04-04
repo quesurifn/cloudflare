@@ -45,3 +45,24 @@ get '/devModeOff' do
 
   redirect to ('/')
 end
+
+get '/devModeOn' do
+  headers = {
+    "X-Auth-Email" => 'mcwiokowski@elexausa.com',
+    "X-Auth-Key" =>   '16e16495042d3ca59411e96d685bac69068ca',
+    "Content-Type" => 'application/json'
+  }
+
+  options = {:value => 'on'}
+  newOptions = JSON.generate(options)
+
+ @result = HTTParty.patch(
+  'https://api.cloudflare.com/client/v4/zones/e7aababbccc6adde2d5928575ccad59f/settings/development_mode',
+  headers: headers,
+  body: newOptions,
+  debug_output: $stdout
+  )
+  puts @result
+
+  redirect to ('/')
+end
