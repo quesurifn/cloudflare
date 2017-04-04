@@ -6,10 +6,21 @@
   </head>
   <body class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
-        <h1>Hello</h1>
+      <div class="col-md-3">
+        <div style="border: solid 1px black; height: 400px; width: 400px;" class="tile">
+          <h2>Dev Mode Status</h2>
 
+          <% if @isDevModeOn['result']['value'] == 'on' %>
+            <h2 style="background: green;">ON</h2>
+            <h2>Time Remaining: <%= @secondsToMinutes %></h2>
 
+            <a href="#">Turn off Dev Mode</a>
+          <% else %>
+            <h2 style="background: red;">OFF</h2>
+
+            <a href="#">Turn On Dev Mode</a>
+          <% end %>
+        </div>
       </div>
     </div>
   </body>

@@ -10,10 +10,15 @@ get '/' do
     "Content-Type" => 'application/json'
   }
 
-  isDevModeOn = HTTParty.get(
+  @isDevModeOn = HTTParty.get(
     'https://api.cloudflare.com/client/v4/zones/e7aababbccc6adde2d5928575ccad59f/settings/development_mode',
     :headers => headers
   )
+  @t = @isDevModeOn['result']['time_remaining']
+  @secondsToMinutes = Time.at(@t).utc.strftime("%H:%M:%S")
 
-  erb :index, :locals => isDevModeOn
+  puts @isDevModeOn
+  puts @secondsToMinutes
+
+  erb :index
 end #end for get
