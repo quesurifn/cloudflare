@@ -2,12 +2,11 @@
   <head>
     <title>CloudFlare App</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/master.css">
   </head>
   <body class="container-fluid">
     <div class="row">
 
-      <div class="col-md-3 col-xs-3">
+      <div class="col-md-3 col-md-offset-2 col-xs-12">
         <div style="border: solid 1px black; height: 300px; width: 300px;" class="tile">
           <h2 style="text-align:center;">Dev Mode Status</h2>
 
@@ -24,15 +23,35 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-xs-3">
-        <div style="border: solid 1px black; height: 300px; width: 300px;" class="tile">
+      <div class="col-md-3 col-md-offset-2 col-xs-12">
+        <div id="purge" style="border: solid 1px black;height: 300px; width: 300px;" class="tile">
           <h2 class="text-center">Purge Cache</h2>
-
-          <a class="btn btn-active btn-success text-center" style="display:inline-block;margin:10rem 9.5rem;" href="/purgeCache">Purge Cache</a>
+          <a id="cache" class="btn btn-active btn-success text-center" style="display:inline-block;margin:10rem 9.5rem;" href="/purgeCache">Purge Cache</a>
+          <h3 class="text-center" id='message'></h3>
         </div>
       </div>
 
 
     </div>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script>
+    jQuery(document).ready(function($) {
+      $('#cache').on('click', function(e) {
+        jQuery('#message').append( 'Cache Was Purged' ).delay(7000).queue(function(next){
+            jQuery(this).fadeOut('slow').remove();
+          });
+        });
+      })
+  </script>
+  <style>
+    @media screen and (max-width: 992px) {
+      .tile {
+        margin: 2rem auto;
+      }
+    }
+  </style>
   </body>
 </html>
